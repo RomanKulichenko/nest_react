@@ -1,4 +1,5 @@
 import { SequelizeModuleOptions } from '@nestjs/sequelize';
+import { UsersModel } from 'src/users/users.model';
 
 export const getDatabaseOptions = (): SequelizeModuleOptions => {
 	return {
@@ -8,7 +9,7 @@ export const getDatabaseOptions = (): SequelizeModuleOptions => {
 		username: process.env.POSTRGES_USER,
 		password: process.env.POSTRGES_PASSWORD,
 		database: process.env.POSTRGES_DB,
-		models: [],
+		models: [UsersModel],
 		autoLoadModels: true 						// Creates database tables based on models
 	};
 };
