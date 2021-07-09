@@ -2,6 +2,8 @@
 /server/dist
 /server/node_modules
 /server/.env
+/server/docker-compose.yml
+/server/docker.env
 /frontend/node_modules
 
 # Logs
