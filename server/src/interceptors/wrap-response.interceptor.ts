@@ -5,6 +5,10 @@ import { tap, map } from 'rxjs/operators';
 @Injectable()
 export class WrapResponseInterceptor implements NestInterceptor {
 	intercept(context: ExecutionContext, next: CallHandler): Observable<object> {
-		return next.handle().pipe(map((data) => ({data})));
+		return next.handle().pipe(map((data) => ({
+			sucess: true,
+			data,
+			errors: []
+		})));
 	}
 }
