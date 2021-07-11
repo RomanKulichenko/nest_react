@@ -3,6 +3,8 @@ import { AppModule } from './app.module';
 import * as helmet from 'helmet';
 import { WrapResponseInterceptor } from './interceptors/wrap-response.interceptor';
 import { CustomExceptionFilter } from './exceptionFilters/custom-exception-filter';
+import { ValidationPipe } from '@nestjs/common';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
 	const PORT = process.env.PORT || 5000;
@@ -11,8 +13,10 @@ async function bootstrap() {
 	app.setGlobalPrefix('api');
 	app.enableCors();
 	app.use(helmet());
+	app.use(cookieParser());
 
-	// app.useGlobalPipes(new ValidateInputPipe());
+	// validate data from dto
+	app.useGlobalPipes(new ValidationPipe());
 
 	// handle error messages
 	app.useGlobalFilters(new CustomExceptionFilter());

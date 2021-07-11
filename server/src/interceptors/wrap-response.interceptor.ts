@@ -7,7 +7,7 @@ export class WrapResponseInterceptor implements NestInterceptor {
 	intercept(context: ExecutionContext, next: CallHandler): Observable<object> {
 		return next.handle().pipe(map((data) => ({
 			sucess: true,
-			data,
+			data: data || {},
 			errors: []
 		})));
 	}
